@@ -258,6 +258,49 @@
       box-shadow: 8px 14px 36px var(--shadow);
     }
 
+	.painting-text {
+	  display: flex;
+	  align-items: flex-start;
+	  justify-content: flex-start;
+	  padding: clamp(10px, 3.5vw, 25px);
+	  background: transparent;
+	  border: 1px solid transparent;
+	  container-type: inline-size;
+	  align-self: start;              /* don't stretch to fill the grid row */
+	  min-height: 0;                  /* hug content — no artificial height */
+	  max-height: min(55vh, 340px);   /* cap so text can't dominate the row */
+	  /* aspect-ratio: 3/4;  ← delete this */
+	}
+
+	.painting-text p {
+	  font-family: 'EB Garamond', Georgia, serif;
+	  font-size: clamp(1.08rem, 5.5cqw, 1.45rem);
+	  letter-spacing: 0.01em;
+	  line-height: 1.6;
+	  color: #433021;
+		text-align: justify;
+	  text-justify: inter-word;
+	  hyphens: auto;
+	  max-width: 34ch;
+	  margin: 0;
+	}
+
+	.painting-caption {
+	  font-family: 'Cinzel', serif;
+	  font-size: clamp(0.6rem, 4cqw, 0.78rem);
+	  letter-spacing: 0.16em;
+	  text-transform: uppercase;
+	  color: var(--gold-dark);
+	  text-align: center;
+	  padding: 10px 8px 12px;
+	  margin: 0;
+	  border-top: 1px solid var(--warm-mid);
+	  background: var(--cream);
+	  transition: color 0.35s ease;
+	}
+
+	.painting-card:hover .painting-caption { color: var(--gold); }
+
     /* Mat frame effect */
     .painting-card .mat {
       padding: clamp(8px, 1.4vw, 14px);
@@ -327,19 +370,20 @@
       to   { opacity: 1; }
     }
 
-    .modal {
-      background: var(--cream);
-      border: 1px solid var(--warm-mid);
-      box-shadow: 0 30px 80px rgba(26,20,16,0.5);
-      max-width: 980px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      animation: modalIn 0.35s cubic-bezier(0.22,1,0.36,1);
-    }
+	.modal {
+	  background: var(--cream);
+	  border: 1px solid var(--warm-mid);
+	  box-shadow: 0 30px 80px rgba(26,20,16,0.5);
+	  max-width: 980px;
+	  width: 100%;
+	  max-height: 90vh;
+	  overflow-y: auto;
+	  display: grid;
+	  grid-template-columns: 1fr 1fr;
+	  position: relative;
+	  animation: modalIn 0.35s cubic-bezier(0.22,1,0.36,1);
+	  container-type: inline-size;   /* ← add this */
+	}
 
     @keyframes modalIn {
       from { opacity: 0; transform: scale(0.94) translateY(20px); }
@@ -372,97 +416,87 @@
     }
 
     .modal-info .modal-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      text-transform: uppercase;
-    }
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.78rem, 1.3cqw, 0.85rem);
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
 
-    .modal-info h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.15;
-      color: var(--ink);
-    }
+.modal-info h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.7rem, 4cqw, 2.6rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.15;
+  color: var(--ink);
+}
 
-    .modal-info .meta {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding: 16px 0;
-      border-top: 1px solid var(--warm-mid);
-      border-bottom: 1px solid var(--warm-mid);
-    }
+.modal-info .meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0;
+  border-top: 1px solid var(--warm-mid);
+  border-bottom: 1px solid var(--warm-mid);
+}
 
-    .modal-info .meta span {
-      font-family: 'EB Garamond', serif;
-      font-size: 0.9rem;
-      color: var(--gold-dark);
-    }
+.modal-info .meta span {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.15rem, 1.8cqw, 1.8rem);
+  line-height: 1.0;
+  color: var(--gold-dark);
+}
 
-    .modal-info .meta strong {
-      font-weight: 500;
-      color: var(--ink);
-    }
+.modal-info .meta strong {
+  font-weight: 300;
+  color: var(--ink);
+}
 
-    .modal-info p {
-      font-size: 1rem;
-      line-height: 1.75;
-      color: #3a2e24;
-    }
+.modal-info p {
+  font-size: clamp(1.02rem, 1.9cqw, 1.18rem);
+  line-height: 1.75;
+  color: #3a2e24;
+}
 
-    .modal-info .modal-price {
-      font-family: 'Cinzel', serif;
-      font-size: 1.4rem;
-      color: var(--ink);
-      letter-spacing: 0.08em;
-      margin-top: auto;
-    }
+.modal-info .modal-price {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.35rem, 2.6cqw, 1.7rem);
+  color: var(--ink);
+  letter-spacing: 0.08em;
+  margin-top: auto;
+}
 
-    .modal-info .btn-acquire {
-      display: inline-block;
-      margin-top: 8px;
-      background: var(--ink);
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      padding: 13px 30px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-      align-self: flex-start;
-    }
+.modal-info .btn-acquire {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--ink);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.75rem, 1.3cqw, 0.85rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 14px 34px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  align-self: flex-start;
+}
 
-    .modal-info .btn-acquire:hover {
-      background: var(--gold-dark);
-      color: var(--parchment);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 18px; right: 22px;
-      background: none;
-      border: 1px solid var(--warm-mid);
-      color: var(--gold-dark);
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      padding: 6px 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-      z-index: 10;
-    }
-
-    .modal-close:hover {
-      background: var(--ink);
-      color: var(--gold);
-      border-color: var(--ink);
-    }
+.modal-close {
+  position: absolute;
+  top: 18px; right: 22px;
+  background: none;
+  border: 1px solid var(--warm-mid);
+  color: var(--gold-dark);
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.72rem, 1.1cqw, 0.82rem);
+  letter-spacing: 0.2em;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+}
 
     /* ─────────────────────────────────────────
        ABOUT SECTION
@@ -699,61 +733,215 @@
 
       <div class="painting-grid">
 
-        <div class="painting-card" onclick="openModal('g1')">
-          <div class="mat">
-            <img src="images/imagem_ (1).JPG" alt="Cavalo Cavalo" />
-          </div>
-          <div class="overlay">
-            <p>Óleo sobre tela · 2025</p>
-          </div>
-        </div>
-
-        <div class="painting-card" onclick="openModal('g2')">
-          <div class="mat">
-            <img src="images/imagem_ (11).JPG" alt="Bandeiras Bandeiras" />
-          </div>
-          <div class="overlay">
-            <p>Óleo sobre tela · 2026</p>
-          </div>
-        </div>
-
-        <div class="painting-card" onclick="openModal('g3')">
-          <div class="mat">
-            <img src="images/imagem_ (6).JPG" alt="Tambor Tambor" />
-          </div>
-          <div class="overlay">
-            <p>Óleo sobre tela · 2026</p>
-          </div>
-        </div>
-
-        <div class="painting-card" onclick="openModal('g4')">
-          <div class="mat">
-            <img src="images/imagem_ (13).JPG" alt="Palhaco Palhaco" />
-          </div>
-          <div class="overlay">
-            <p>Gravura · 2025</p>
-          </div>
-        </div>
-
-        <div class="painting-card" onclick="openModal('g5')">
-          <div class="mat">
-            <img src="images/imagem_ (5).JPG" alt="Chifre Chifre" />
-          </div>
-          <div class="overlay">
-            <p>Gravura · 2025</p>
-          </div>
-        </div>
-
-        <div class="painting-card" onclick="openModal('g6')">
-          <div class="mat">
-            <img src="images/imagem_ (12).JPG" alt="Manga Manga" />
-          </div>
-          <div class="overlay">
-            <p>Óleo sobre tela · 2025</p>
-          </div>
-        </div>
-
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g1')">
+      <div class="mat">
+        <img src="images/imagem_-(22).jpg" alt="Jiboia Jiboia" />
       </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g2')">
+      <div class="mat">
+        <img src="images/imagem_-(20).jpg" alt="Tecido Tecido" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+	<div class="painting-text">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+  </div>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g3')">
+      <div class="mat">
+        <img src="images/imagem_-(19).jpg" alt="Olhos Olhos" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g4')">
+      <div class="mat">
+        <img src="images/imagem_-(18).jpg" alt="Ovelha Ovelha" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g5')">
+      <div class="mat">
+        <img src="images/imagem_ (16).jpg" alt="Dodo Dodo" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g6')">
+      <div class="mat">
+        <img src="images/imagem_-(17).jpg" alt="Pipo Pipo" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g7')">
+      <div class="mat">
+        <img src="images/imagem_ (12).JPG" alt="Mulher Mulher" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g8')">
+      <div class="mat">
+        <img src="images/imagem_ (13).JPG" alt="Teatro Teatro" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+	<div class="painting-text">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+  </div>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g9')">
+      <div class="mat">
+        <img src="images/imagem_ (14).jpg" alt="Cobra Cobra" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g10')">
+      <div class="mat">
+        <img src="images/imagem_ (15).jpg" alt="Passaro Passaro" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g11')">
+      <div class="mat">
+        <img src="images/imagem_ (1).JPG" alt="Cavalo Cavalo" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g12')">
+      <div class="mat">
+        <img src="images/imagem_ (2).JPG" alt="Homem Homem" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g13')">
+      <div class="mat">
+        <img src="images/imagem_ (9).JPG" alt="Fogo Fogo" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g14')">
+      <div class="mat">
+        <img src="images/imagem_ (11).JPG" alt="Bandeiras Bandeiras" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g15')">
+      <div class="mat">
+        <img src="images/imagem_ (3).JPG" alt="Diabo Diabo" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g16')">
+      <div class="mat">
+        <img src="images/imagem_ (4).JPG" alt="Mascara Mascara" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g17')">
+      <div class="mat">
+        <img src="images/imagem_ (5).JPG" alt="Linhas Linhas" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g18')">
+      <div class="mat">
+        <img src="images/imagem_ (6).JPG" alt="Rua Rua" />
+      </div>
+      <div class="overlay"><p>Indisponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+  
+  	<div class="painting-text">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+  </div>
+
+  <figure class="painting-item">
+    <div class="painting-card" onclick="openModal('g19')">
+      <div class="mat">
+        <img src="images/imagem_-(21).jpg" alt="Lamen Lamen" />
+      </div>
+      <div class="overlay"><p>Disponível</p></div>
+    </div>
+    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
+  </figure>
+
+</div>
     </section>
 
     <!-- ─── SOBRE ─── -->
@@ -854,64 +1042,140 @@
 
     /* ── PAINTING DATA ── */
     const paintings = {
-      g1: {
-        title: 'Cavalo Cavalo',
-        year: '2025', medium: 'Óleo sobre tela', size: '90 × 120 cm',
-        images: [
-          'images/imagem_ (1).JPG?w=800&q=85',
-        ],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        label: 'Galeria.'
-      },
-      g2: {
-        title: 'Bandeira Bandeira',
-        year: '2025', medium: 'Óleo sobre tela', size: '60 × 80 cm',
-        images: [
-          'images/imagem_ (11).JPG?w=800&q=85',
-        ],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-        label: 'Galeria.'
-      },
-      g3: {
-        title: 'Tambor Tambor',
-        year: '2025', medium: 'Óleo sobre tela', size: '100 × 80 cm',
-        images: [
-          'images/imagem_ (6).JPG?w=800&q=85',
-        ],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-        label: 'Galeria.'
-      },
-      g4: {
-        title: 'Palhaco Palhaco',
-        year: '2025', medium: 'Óleo sobre tela', size: '80 × 100 cm',
-        images: [
-          'images/imagem_ (13).JPG?w=800&q=85',
-        ],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-        label: 'Galeria.'
-      },
-      g5: {
-        title: 'Chifre Chifre',
-        year: '2025', medium: 'Óleo sobre tela', size: '120 × 90 cm',
-        images: [
-          'images/imagem_ (5).JPG?w=800&q=85',
-          'images/imagem_ (5).JPG?w=400&q=80'
-        ],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-        label: 'Galeria.'
-      },
-      g6: {
-        title: 'Manga Manga',
-        year: '2025', medium: 'Óleo sobre tela', size: '100 × 140 cm',
-        images: [
-          'images/imagem_ (12).JPG?w=800&q=85',
-          'images/imagem_ (12).JPG?w=400&q=80'
-        ],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-        label: 'Galeria.'
-      },
-
-    };
+  g1: {
+    title: 'Jiboia Jiboia',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_-(22).jpg'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g2: {
+    title: 'Tecido Tecido',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_-(20).jpg'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g3: {
+    title: 'Olhos Olhos',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_-(19).jpg'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g4: {
+    title: 'Ovelha Ovelha',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_-(18).jpg'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g5: {
+    title: 'Dodo Dodo',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (16).jpg'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g6: {
+    title: 'Pipo Pipo',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_-(17).jpg'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g7: {
+    title: 'Mulher Mulher',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (12).JPG'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g8: {
+    title: 'Teatro Teatro',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (13).JPG'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g9: {
+    title: 'Cobra Cobra',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (14).jpg'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g10: {
+    title: 'Passaro Passaro',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (15).jpg'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g11: {
+    title: 'Cavalo Cavalo',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (1).JPG'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g12: {
+    title: 'Homem Homem',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (2).JPG'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g13: {
+    title: 'Fogo Fogo',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (9).JPG'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g14: {
+    title: 'Bandeiras Bandeiras',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (11).JPG'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g15: {
+    title: 'Diabo Diabo',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (3).JPG'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g16: {
+    title: 'Mascara Mascara',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (4).JPG'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g17: {
+    title: 'Linhas Linhas',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (5).JPG'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g18: {
+    title: 'Rua Rua',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_ (6).JPG'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+  g19: {
+    title: 'Lamen Lamen',
+    year: '2026', medium: 'Óleo sobre tela', size: '—',
+    images: ['images/imagem_-(21).jpg'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    label: 'Galeria.'
+  },
+};
 
     /* ── MODAL ── */
     function openModal(id) {
