@@ -1,115 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-	<meta name="robots" content="noai, noimageai">
-	<meta name="googlebot" content="noai, noml">
-	<meta name="gptbot" content="noindex, nofollow">
-	<meta name="claudebot" content="noindex, nofollow">
+
+  <meta name="robots" content="noai, noimageai">
+  <meta name="googlebot" content="noai, noml">
+  <meta name="gptbot" content="noindex, nofollow">
+  <meta name="claudebot" content="noindex, nofollow">
 
   <title>Victoria Velazquez - Galeria</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Cinzel:wght@400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <style>
-    /* ─────────────────────────────────────────
-       CSS VARIABLES
-    ───────────────────────────────────────── */
-	:root {
-	  --ink:       #1a1410;
-	  --parchment: #f5f0e8;
-	  --cream:     #ede7d9;
-	  --gold:      #b8956a;
-	  --gold-dark: #8a6d4b;
-	  --warm-mid:  #c9b99a;
-	  --shadow:    rgba(26,20,16,0.18);
-	  --footer-bg: #1a1410;
-	  --footer-fg: #c9b99a;
+    :root {
+      --tinta: #1a1410;
+      --scroll: #f5f0e8;
+      --creme: #ede7d9;
+      --dourado: #b8956a;
+      --dourado-escuro: #8a6d4b;
+      --areia: #c9b99a;
+      --sombra: rgba(26,20,16,0.18);
 
-	  /* responsive scale: 120px on a phone → 350px on desktop */
-	  --header-h: clamp(150px, 36vw, 350px);
-	  --logo-h: min(46vw, calc(var(--header-h) - 48px), 260px);
-	  --footer-h: 80px;
-	}
+      --altura-cabecalho: clamp(150px, 36vw, 350px);
+      --altura-logo: min(46vw, calc(var(--altura-cabecalho) - 48px), 260px);
+      --altura-rodape: 80px;
+    }
 
-    /* ─────────────────────────────────────────
-       RESET & BASE
-    ───────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'EB Garamond', Georgia, serif;
-      color: var(--ink);
-      background: var(--parchment);
+      color: var(--tinta);
+      background: var(--scroll);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* ─────────────────────────────────────────
-       HEADER
-    ───────────────────────────────────────── */
-	header {
-	  position: static;
-	  top: 0;
-	  z-index: 100;
-	  height: var(--header-h);
+    /* Cabeçalho */
+    header {
+      height: var(--altura-cabecalho);
+      background-image: url('images/template/header_portal.png');
+      background-size: min(calc(100vh * 16 / 11), 100%) 100%;
+      background-position: center;
+      background-color: #221912;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(2px, 0.6vw, 10px);
+      padding-bottom: clamp(4px, 0.8vw, 14px);
+    }
 
-	  background-image: url('images/template/header_portal.png');
-	  background-size: min(calc(100vh * 16 / 11), 100%) 100%;
-	  background-position: center;
-	  background-color: #221912;
-	  background-repeat: no-repeat;
+    .logo-caixa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+      max-width: 100%;
+    }
 
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  justify-content: flex-end;
-	  
-	  gap: clamp(2px, 0.6vw, 10px);
-	  padding-bottom: clamp(4px, 0.8vw, 14px);
-	}
-
-	.logo-wrap {
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	}
-
-	.logo {
-	  height: var(--logo-h);
-	  width: auto;
-	  max-width: 90vw;
-	  object-fit: contain;
-	  display: block;
-	}
-	
-	@media (max-width: 768px) {
-	  header { position: static; }
-	}
-
-    /*.logo {
-      font-family: 'Cinzel', serif;
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      color: var(--parchment);
-      text-transform: uppercase;
-      line-height: 1;
-      position: relative;
-    }*/
-
-	.logo-wrap {
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  min-height: 0;
-	  max-width: 100%;
-	}
+    .logo {
+      height: var(--altura-logo);
+      width: auto;
+      max-width: 90vw;
+      object-fit: contain;
+      display: block;
+    }
 
     nav {
       display: flex;
@@ -135,179 +97,154 @@
       bottom: -4px;
       left: 0; right: 0;
       height: 1px;
-      background: var(--gold);
+      background: var(--dourado);
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
 
     nav a:hover,
-    nav a.active { color: var(--gold); }
+    nav a.ativo { color: var(--dourado); }
     nav a:hover::after,
-    nav a.active::after { transform: scaleX(1); }
+    nav a.ativo::after { transform: scaleX(1); }
 
-    /* ─────────────────────────────────────────
-       BODY / MAIN TILE BACKGROUND
-    ───────────────────────────────────────── */
+    /* Corpo */
     main {
       flex: 1;
-	  
-	  background-image: url('images/template/body_portal.png');
-	  background-size: min(calc(100vh * 16 / 11), 100%) auto;
-	  background-position: center top;
-	  background-repeat: repeat-y;
-	  background-color: #221912;
-	  
-      padding: 10px 80px;
-      padding-bottom: 70px;
+      background-image: url('images/template/body_portal.png');
+      background-size: min(calc(100vh * 16 / 11), 100%) auto;
+      background-position: center top;
+      background-repeat: repeat-y;
+      background-color: #221912;
+      padding: 10px 80px 70px;
     }
 
-    /* ─────────────────────────────────────────
-       SECTIONS (tabs)
-    ───────────────────────────────────────── */
-    .section {
-	  display: none;
-	  max-width: calc(100vh * 11 / 9);
-	  margin-left: auto;
-	  margin-right: auto;
-	}
-    .section.active { display: block; animation: fadeIn 0.5s ease; }
+    .secao {
+      display: none;
+      max-width: calc(100vh * 11 / 9);
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-    @keyframes fadeIn {
+    .secao.ativa { display: block; animation: aparecer 0.5s ease; }
+
+    @keyframes aparecer {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Section title block */
-	.section-header {
-	  text-align: center;
-	  margin-bottom: clamp(20px, 5vw, 36px);
-	}
+    .secao-cabecalho {
+      text-align: center;
+      margin-bottom: clamp(20px, 5vw, 36px);
+    }
 
-	.section-header h2 {
-	  font-family: 'Cinzel', serif;
-	  font-size: clamp(1.4rem, 4.5vw, 2.2rem);
-	  font-weight: 400;
-	  letter-spacing: clamp(0.08em, 0.6vw, 0.18em);
-	  color: var(--ink);
-	}
+    .filete {
+      display: flex;
+      align-items: center;
+      gap: clamp(8px, 2vw, 16px);
+      justify-content: center;
+      margin-top: clamp(8px, 1.6vw, 14px);
+    }
 
-	.section-header .rule {
-	  display: flex;
-	  align-items: center;
-	  gap: clamp(8px, 2vw, 16px);
-	  justify-content: center;
-	  margin-top: clamp(8px, 1.6vw, 14px);
-	}
+    .filete span {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.68rem, 2.6vw, 0.88rem);
+      letter-spacing: clamp(0.12em, 0.7vw, 0.3em);
+      color: var(--dourado-escuro);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
 
-	.section-header .rule span {
-	  font-family: 'Cinzel', serif;
-	  font-size: clamp(0.68rem, 2.6vw, 0.88rem);
-	  letter-spacing: clamp(0.12em, 0.7vw, 0.3em);
-	  color: var(--gold-dark);
-	  text-transform: uppercase;
-	  white-space: nowrap;   /* ← key: text never wraps */
-	}
+    .filete::before,
+    .filete::after {
+      content: '';
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 80px;
+      height: 1px;
+    }
 
-	.section-header .rule::before,
-	.section-header .rule::after {
-	  content: '';
-	  flex: 1 1 0;      /* ← can grow and shrink */
-	  min-width: 0;     /* ← allows shrinking below content size */
-	  max-width: 80px;  /* ← cap at the original desktop width */
-	  height: 1px;
-	}
+    .filete::before { background: linear-gradient(90deg, transparent, var(--dourado-escuro)); }
+    .filete::after  { background: linear-gradient(90deg, var(--dourado-escuro), transparent); }
 
-	.section-header .rule::before {
-	  background: linear-gradient(90deg, transparent, var(--gold-dark));
-	}
-	.section-header .rule::after {
-	  background: linear-gradient(90deg, var(--gold-dark), transparent);
-	}
+    /* Galeria */
+    .grade-quadros {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: clamp(42px, 8vw, 48px);
+      column-gap: clamp(22px, 2.5vw, 36px);
+    }
 
-    /* ─────────────────────────────────────────
-       PAINTING GRID (Galeria & Loja)
-    ───────────────────────────────────────── */
-	.painting-grid {
-	  display: grid;
-	  grid-template-columns: repeat(1, 1fr);
-	  row-gap: clamp(42px, 8vw, 48px);       /* vertical space between cards */
-	  column-gap: clamp(22px, 2.5vw, 36px);  /* horizontal space, unchanged */
-	}
+    @media (min-width: 640px) {
+      .grade-quadros { grid-template-columns: repeat(3, 1fr); }
+    }
 
-	@media (min-width: 640px) {
-	  .painting-grid { grid-template-columns: repeat(3, 1fr); }
-	}
+    @media (min-width: 1024px) {
+      .grade-quadros { grid-template-columns: repeat(4, 1fr); }
+    }
 
-	@media (min-width: 1024px) {
-	  .painting-grid { grid-template-columns: repeat(4, 1fr); }
-	}
-
-    .painting-card {
-	  container-type: inline-size;
+    .cartao-quadro {
+      container-type: inline-size;
       cursor: pointer;
       position: relative;
-      background: var(--cream);
-      border: 1px solid var(--warm-mid);
-      box-shadow: 4px 6px 20px var(--shadow);
+      background: var(--creme);
+      border: 1px solid var(--areia);
+      box-shadow: 4px 6px 20px var(--sombra);
       overflow: hidden;
       transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .painting-card:hover {
+    .cartao-quadro:hover {
       transform: translateY(-6px) scale(1.015);
-      box-shadow: 8px 14px 36px var(--shadow);
+      box-shadow: 8px 14px 36px var(--sombra);
     }
 
-	.painting-text {
-	  display: flex;
-	  align-items: flex-start;
-	  justify-content: flex-start;
-	  padding: clamp(10px, 3.5vw, 25px);
-	  background: transparent;
-	  border: 1px solid transparent;
-	  container-type: inline-size;
-	  align-self: start;              /* don't stretch to fill the grid row */
-	  min-height: 0;                  /* hug content — no artificial height */
-	  max-height: min(55vh, 340px);   /* cap so text can't dominate the row */
-	  /* aspect-ratio: 3/4;  ← delete this */
-	}
+    .quadro-texto {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: clamp(10px, 3.5vw, 25px);
+      border: 1px solid transparent;
+      container-type: inline-size;
+      align-self: start;
+      min-height: 0;
+      max-height: min(55vh, 340px);
+    }
 
-	.painting-text p {
-	  font-family: 'EB Garamond', Georgia, serif;
-	  font-size: clamp(1.08rem, 5.5cqw, 1.45rem);
-	  letter-spacing: 0.01em;
-	  line-height: 1.6;
-	  color: #433021;
-		text-align: justify;
-	  text-justify: inter-word;
-	  hyphens: auto;
-	  max-width: 34ch;
-	  margin: 0;
-	}
+    .quadro-texto p {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(1.08rem, 5.5cqw, 1.45rem);
+      letter-spacing: 0.01em;
+      line-height: 1.6;
+      color: #433021;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      max-width: 34ch;
+      margin: 0;
+    }
 
-	.painting-caption {
-	  font-family: 'Cinzel', serif;
-	  font-size: clamp(0.6rem, 4cqw, 0.78rem);
-	  letter-spacing: 0.16em;
-	  text-transform: uppercase;
-	  color: var(--gold-dark);
-	  text-align: center;
-	  padding: 10px 8px 12px;
-	  margin: 0;
-	  border-top: 1px solid var(--warm-mid);
-	  background: var(--cream);
-	  transition: color 0.35s ease;
-	}
+    .legenda-quadro {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.6rem, 4cqw, 0.78rem);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dourado-escuro);
+      text-align: center;
+      padding: 10px 8px 12px;
+      margin: 0;
+      border-top: 1px solid var(--areia);
+      background: var(--creme);
+      transition: color 0.35s ease;
+    }
 
-	.painting-card:hover .painting-caption { color: var(--gold); }
+    .cartao-quadro:hover .legenda-quadro { color: var(--dourado); }
 
-    /* Mat frame effect */
-    .painting-card .mat {
+    .cartao-quadro .passe-partout {
       padding: clamp(8px, 1.4vw, 14px);
-      background: var(--cream);
+      background: var(--creme);
     }
 
-    .painting-card img {
+    .cartao-quadro img {
       width: 100%;
       aspect-ratio: 3/4;
       object-fit: cover;
@@ -316,42 +253,30 @@
       transition: filter 0.35s ease;
     }
 
-    .painting-card:hover img { filter: sepia(0%) contrast(1.07); }
+    .cartao-quadro:hover img { filter: sepia(0%) contrast(1.07); }
 
-    /* Hover name overlay */
-	.painting-card .overlay {
-	  position: absolute;
-	  bottom: 0; left: 0; right: 0;
-	  background: linear-gradient(0deg, rgba(26,20,16,0.82) 0%, transparent 100%);
-	  padding: 28px 18px 14px;
-	  opacity: 0;
-	  transition: opacity 0.35s ease;
-	  pointer-events: none;   /* don't intercept clicks while hidden */
-	}
-
-	.painting-card:hover .overlay { opacity: 1; }
-
-    .painting-card .overlay h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 800;
-      font-style: italic;
-      color: #eae4ce;
-      letter-spacing: 0.06em;
+    .cartao-quadro .sobreposicao {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(0deg, rgba(26,20,16,0.82) 0%, transparent 100%);
+      padding: 28px 18px 14px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
     }
 
-	.painting-card .overlay p {
-	  font-family: 'Cinzel', serif;
-	  font-size: clamp(0.68rem, 5cqw, 1.1rem);
-	  letter-spacing: 0.18em;
-	  color: #f2e8c5;
-	  margin-top: 0;
-	}
+    .cartao-quadro:hover .sobreposicao { opacity: 1; }
 
-    /* ─────────────────────────────────────────
-       MODAL / CONTEXTUAL WINDOW
-    ───────────────────────────────────────── */
-    .modal-backdrop {
+    .cartao-quadro .sobreposicao p {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.68rem, 5cqw, 1.1rem);
+      letter-spacing: 0.18em;
+      color: #f2e8c5;
+      margin-top: 0;
+    }
+
+    /* Janela de detalhes */
+    .modal-fundo {
       display: none;
       position: fixed;
       inset: 0;
@@ -363,144 +288,142 @@
       backdrop-filter: blur(3px);
     }
 
-    .modal-backdrop.open { display: flex; animation: backdropIn 0.3s ease; }
+    .modal-fundo.aberto { display: flex; animation: fundoEntra 0.3s ease; }
 
-    @keyframes backdropIn {
+    @keyframes fundoEntra {
       from { opacity: 0; }
       to   { opacity: 1; }
     }
 
-	.modal {
-	  background: var(--cream);
-	  border: 1px solid var(--warm-mid);
-	  box-shadow: 0 30px 80px rgba(26,20,16,0.5);
-	  max-width: 980px;
-	  width: 100%;
-	  max-height: 90vh;
-	  overflow-y: auto;
-	  display: grid;
-	  grid-template-columns: 1fr 1fr;
-	  position: relative;
-	  animation: modalIn 0.35s cubic-bezier(0.22,1,0.36,1);
-	  container-type: inline-size;   /* ← add this */
-	}
-
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.94) translateY(20px); }
-      to   { opacity: 1; transform: scale(1)    translateY(0); }
+    .modal {
+      background: var(--creme);
+      border: 1px solid var(--areia);
+      box-shadow: 0 30px 80px rgba(26,20,16,0.5);
+      max-width: 980px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      animation: modalEntra 0.35s cubic-bezier(0.22,1,0.36,1);
+      container-type: inline-size;
     }
 
-    .modal-images {
-      background: #1a1410;
+    @keyframes modalEntra {
+      from { opacity: 0; transform: scale(0.94) translateY(20px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-imagens {
+      background: var(--tinta);
       padding: 28px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    .modal-images img {
+    .modal-imagens img {
       width: 100%;
       object-fit: cover;
       display: block;
       filter: sepia(5%) contrast(1.05);
     }
 
-    .modal-images img:first-child { flex: 2; }
-    .modal-images img:not(:first-child) { flex: 1; }
+    .modal-imagens img:first-child { flex: 2; }
+    .modal-imagens img:not(:first-child) { flex: 1; }
 
-    .modal-info {
+    .modal-dados {
       padding: 48px 40px;
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    .modal-info .modal-label {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(0.78rem, 1.3cqw, 0.85rem);
-  letter-spacing: 0.3em;
-  color: var(--gold);
-  text-transform: uppercase;
-}
+    .modal-dados .modal-etiqueta {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.78rem, 1.3cqw, 0.85rem);
+      letter-spacing: 0.3em;
+      color: var(--dourado);
+      text-transform: uppercase;
+    }
 
-.modal-info h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.7rem, 4cqw, 2.6rem);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.15;
-  color: var(--ink);
-}
+    .modal-dados h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 4cqw, 2.6rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.15;
+      color: var(--tinta);
+    }
 
-.modal-info .meta {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px 0;
-  border-top: 1px solid var(--warm-mid);
-  border-bottom: 1px solid var(--warm-mid);
-}
+    .modal-dados .ficha {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px 0;
+      border-top: 1px solid var(--areia);
+      border-bottom: 1px solid var(--areia);
+    }
 
-.modal-info .meta span {
-  font-family: 'EB Garamond', serif;
-  font-size: clamp(1.15rem, 1.8cqw, 1.8rem);
-  line-height: 1.0;
-  color: var(--gold-dark);
-}
+    .modal-dados .ficha span {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1.15rem, 1.8cqw, 1.8rem);
+      line-height: 1.0;
+      color: var(--dourado-escuro);
+    }
 
-.modal-info .meta strong {
-  font-weight: 300;
-  color: var(--ink);
-}
+    .modal-dados .ficha strong {
+      font-weight: 400;
+      color: var(--tinta);
+    }
 
-.modal-info p {
-  font-size: clamp(1.02rem, 1.9cqw, 1.18rem);
-  line-height: 1.75;
-  color: #3a2e24;
-}
+    .modal-dados p {
+      font-size: clamp(1.02rem, 1.9cqw, 1.18rem);
+      line-height: 1.75;
+      color: #3a2e24;
+    }
 
-.modal-info .modal-price {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(1.35rem, 2.6cqw, 1.7rem);
-  color: var(--ink);
-  letter-spacing: 0.08em;
-  margin-top: auto;
-}
+    .modal-dados .modal-preco {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.35rem, 2.6cqw, 1.7rem);
+      color: var(--tinta);
+      letter-spacing: 0.08em;
+      margin-top: auto;
+    }
 
-.modal-info .btn-acquire {
-  display: inline-block;
-  margin-top: 8px;
-  background: var(--ink);
-  color: var(--gold);
-  font-family: 'Cinzel', serif;
-  font-size: clamp(0.75rem, 1.3cqw, 0.85rem);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  padding: 14px 34px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  align-self: flex-start;
-}
+    .modal-dados .btn-comprar {
+      display: inline-block;
+      margin-top: 8px;
+      background: var(--tinta);
+      color: var(--dourado);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.75rem, 1.3cqw, 0.85rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 14px 34px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      align-self: flex-start;
+    }
 
-.modal-close {
-  position: absolute;
-  top: 18px; right: 22px;
-  background: none;
-  border: 1px solid var(--warm-mid);
-  color: var(--gold-dark);
-  font-family: 'Cinzel', serif;
-  font-size: clamp(0.72rem, 1.1cqw, 0.82rem);
-  letter-spacing: 0.2em;
-  padding: 7px 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  z-index: 10;
-}
+    .modal-fechar {
+      position: absolute;
+      top: 18px; right: 22px;
+      background: none;
+      border: 1px solid var(--areia);
+      color: var(--dourado-escuro);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.72rem, 1.1cqw, 0.82rem);
+      letter-spacing: 0.2em;
+      padding: 7px 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 10;
+    }
 
-    /* ─────────────────────────────────────────
-       ABOUT SECTION
-    ───────────────────────────────────────── */
+    /* Sobre */
     .sobre-layout {
       max-width: 860px;
       margin: 0 auto;
@@ -510,11 +433,9 @@
       align-items: start;
     }
 
-    .sobre-image-col {
-      position: relative;
-    }
+    .sobre-imagem { position: relative; }
 
-    .sobre-image-col img {
+    .sobre-imagem img {
       width: 100%;
       aspect-ratio: 3/4;
       object-fit: cover;
@@ -522,17 +443,16 @@
       filter: sepia(15%) contrast(1.05);
     }
 
-    /* Double-border frame effect */
-    .sobre-image-col::before {
+    .sobre-imagem::before {
       content: '';
       position: absolute;
       inset: -12px;
-      border: 1px solid var(--warm-mid);
+      border: 1px solid var(--areia);
       pointer-events: none;
       z-index: 1;
     }
 
-    .sobre-image-col::after {
+    .sobre-imagem::after {
       content: '';
       position: absolute;
       inset: -6px;
@@ -540,102 +460,81 @@
       pointer-events: none;
     }
 
-    .sobre-text h3 {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .sobre-text p {
+    .sobre-texto p {
       font-size: 1.08rem;
       line-height: 1.85;
       color: #3a2e24;
       margin-bottom: 20px;
     }
 
-    .sobre-text p:first-of-type::first-letter {
+    .sobre-texto p:first-of-type::first-letter {
       font-family: 'Cinzel', serif;
       font-size: 3.5rem;
       line-height: 0.85;
       float: left;
       margin-right: 8px;
-      color: var(--gold-dark);
+      color: var(--dourado-escuro);
       margin-top: 6px;
     }
 
-    .sobre-sig {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.6rem;
-      color: var(--gold-dark);
-      margin-top: 24px;
+    .sobre-contato {
+      margin-top: clamp(36px, 6vw, 60px);
+      padding-top: clamp(20px, 3vw, 32px);
+      border-top: 1px solid var(--areia);
     }
 
-    /* ─────────────────────────────────────────
-       CONTACT SECTION
-    ───────────────────────────────────────── */
-    .contato-layout {
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .contato-intro {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #3a2e24;
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .contato-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border: 1px solid var(--warm-mid);
-    }
-
-    .contato-item {
-      padding: 36px 40px;
-      border-right: 1px solid var(--warm-mid);
-      border-bottom: 1px solid var(--warm-mid);
-    }
-
-    .contato-item:nth-child(even) { border-right: none; }
-    .contato-item:nth-last-child(-n+2) { border-bottom: none; }
-
-    .contato-item .label {
+    .sobre-contato .rotulo {
       font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
+      font-size: 0.68rem;
       letter-spacing: 0.3em;
-      color: var(--gold);
       text-transform: uppercase;
-      margin-bottom: 10px;
+      color: var(--dourado);
+      margin-bottom: clamp(10px, 1.6vw, 14px);
     }
 
-    .contato-item p {
+    .sobre-contato .intro {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #3a2e24;
+      margin-bottom: clamp(20px, 3vw, 28px);
+    }
+
+    .sobre-contato .itens {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(14px, 2.2vw, 18px);
+    }
+
+    .sobre-contato .item .campo {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--dourado-escuro);
+      margin-bottom: 4px;
+    }
+
+    .sobre-contato .item p {
       font-size: 1rem;
-      line-height: 1.65;
-      color: var(--ink);
+      line-height: 1.5;
+      color: var(--tinta);
+      margin: 0;
+      overflow-wrap: anywhere;
     }
 
-    .contato-item a {
-      color: var(--gold-dark);
+    .sobre-contato .item a {
+      color: var(--dourado-escuro);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    .contato-item a:hover { color: var(--gold); }
+    .sobre-contato .item a:hover { color: var(--dourado); }
 
-    /* ─────────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────────── */
+    /* Rodapé */
     footer {
-      height: var(--footer-h);
-      background: var(--footer-bg);
-      border-top: 1px solid var(--gold-dark);
+      height: var(--altura-rodape);
+      background: var(--tinta);
+      border-top: 1px solid var(--dourado-escuro);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -643,26 +542,26 @@
       flex-shrink: 0;
     }
 
-    footer .footer-logo {
+    footer .rodape-logo {
       font-family: 'Cinzel', serif;
       font-size: 0.85rem;
       letter-spacing: 0.22em;
-      color: var(--gold);
+      color: var(--dourado);
     }
 
-    footer .footer-copy {
+    footer .rodape-direitos {
       font-family: 'EB Garamond', serif;
       font-size: 0.92rem;
-      color: var(--footer-fg);
+      color: var(--areia);
       opacity: 0.9;
     }
 
-    footer .footer-links {
+    footer .rodape-links {
       display: flex;
       gap: 28px;
     }
 
-    footer .footer-links a {
+    footer .rodape-links a {
       font-family: 'Cinzel', serif;
       font-size: 0.72rem;
       letter-spacing: 0.18em;
@@ -672,31 +571,23 @@
       transition: color 0.2s;
     }
 
-    footer .footer-links a:hover { color: var(--gold); }
+    footer .rodape-links a:hover { color: var(--dourado); }
 
-    /* ─────────────────────────────────────────
-       RESPONSIVE
-    ───────────────────────────────────────── */
+    /* Telas pequenas */
     @media (max-width: 768px) {
-	  main {
-		padding: 10px 24px;
-		padding-bottom: clamp(80px, 20vw, 120px);
-	  }
+      main {
+        padding: 10px 24px;
+        padding-bottom: clamp(80px, 20vw, 120px);
+      }
 
       nav { gap: 24px; }
       nav a { font-size: 0.82rem; }
 
       .modal { grid-template-columns: 1fr; }
-      .modal-images { display: none; }
+      .modal-imagens { display: none; }
 
       .sobre-layout { grid-template-columns: 1fr; }
-      .sobre-image-col { max-width: 260px; margin: 0 auto; }
-
-      .form-row { grid-template-columns: 1fr; }
-      .contato-grid { grid-template-columns: 1fr; }
-      .contato-item:nth-child(even) { border-right: none; }
-      .contato-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--warm-mid); }
-      .contato-item:last-child { border-bottom: none; }
+      .sobre-imagem { max-width: 260px; margin: 0 auto; }
 
       footer { flex-direction: column; justify-content: center; gap: 10px; padding: 16px; height: auto; }
     }
@@ -704,516 +595,167 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════
-       HEADER
-  ═══════════════════════════════════════ -->
   <header>
-    <div class="logo-wrap">
-      <img src="images/signature.png" alt="Artist Signature" class="logo" />
-      <!-- <span>Artista Visual</span> */ -->
+    <div class="logo-caixa">
+      <img src="images/signature.png" alt="Assinatura da artista" class="logo" />
     </div>
     <nav>
-      <a href="#" class="active" onclick="showSection('galeria',this)">Galeria</a>
-      <a href="#" onclick="showSection('sobre',this)">Sobre</a>
-      <a href="#" onclick="showSection('contato',this)">Contato</a>
+      <a href="#" class="ativo" data-secao="galeria">Galeria</a>
+      <a href="#" data-secao="sobre">Sobre</a>
+      <a href="catalogo.pdf" target="_blank" rel="noopener">Catálogo</a>
     </nav>
   </header>
 
-  <!-- ═══════════════════════════════════════
-       MAIN
-  ═══════════════════════════════════════ -->
   <main>
 
-    <!-- ─── GALERIA ─── -->
-    <section id="galeria" class="section active">
-      <div class="section-header">
-        <!--<h2>Galeria</h2>-->
-        <div class="rule"><span>Coleção de Trabalhos</span></div>
+    <section id="galeria" class="secao ativa">
+      <div class="secao-cabecalho">
+        <div class="filete"><span>Coleção de Trabalhos</span></div>
       </div>
 
-      <div class="painting-grid">
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g1')">
-      <div class="mat">
-        <img src="images/imagem_-(22).jpg" alt="Jiboia Jiboia" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g2')">
-      <div class="mat">
-        <img src="images/imagem_-(20).jpg" alt="Tecido Tecido" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-	<div class="painting-text">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    </p>
-  </div>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g3')">
-      <div class="mat">
-        <img src="images/imagem_-(19).jpg" alt="Olhos Olhos" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g4')">
-      <div class="mat">
-        <img src="images/imagem_-(18).jpg" alt="Ovelha Ovelha" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g5')">
-      <div class="mat">
-        <img src="images/imagem_ (16).jpg" alt="Dodo Dodo" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g6')">
-      <div class="mat">
-        <img src="images/imagem_-(17).jpg" alt="Pipo Pipo" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g7')">
-      <div class="mat">
-        <img src="images/imagem_ (12).JPG" alt="Mulher Mulher" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g8')">
-      <div class="mat">
-        <img src="images/imagem_ (13).JPG" alt="Teatro Teatro" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-	<div class="painting-text">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    </p>
-  </div>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g9')">
-      <div class="mat">
-        <img src="images/imagem_ (14).jpg" alt="Cobra Cobra" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g10')">
-      <div class="mat">
-        <img src="images/imagem_ (15).jpg" alt="Passaro Passaro" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g11')">
-      <div class="mat">
-        <img src="images/imagem_ (1).JPG" alt="Cavalo Cavalo" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g12')">
-      <div class="mat">
-        <img src="images/imagem_ (2).JPG" alt="Homem Homem" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g13')">
-      <div class="mat">
-        <img src="images/imagem_ (9).JPG" alt="Fogo Fogo" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g14')">
-      <div class="mat">
-        <img src="images/imagem_ (11).JPG" alt="Bandeiras Bandeiras" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g15')">
-      <div class="mat">
-        <img src="images/imagem_ (3).JPG" alt="Diabo Diabo" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g16')">
-      <div class="mat">
-        <img src="images/imagem_ (4).JPG" alt="Mascara Mascara" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g17')">
-      <div class="mat">
-        <img src="images/imagem_ (5).JPG" alt="Linhas Linhas" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g18')">
-      <div class="mat">
-        <img src="images/imagem_ (6).JPG" alt="Rua Rua" />
-      </div>
-      <div class="overlay"><p>Indisponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-  
-  	<div class="painting-text">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    </p>
-  </div>
-
-  <figure class="painting-item">
-    <div class="painting-card" onclick="openModal('g19')">
-      <div class="mat">
-        <img src="images/imagem_-(21).jpg" alt="Lamen Lamen" />
-      </div>
-      <div class="overlay"><p>Disponível</p></div>
-    </div>
-    <figcaption class="painting-caption">Óleo sobre tela · 2026</figcaption>
-  </figure>
-
-</div>
+      <div class="grade-quadros" id="grade-quadros"></div>
     </section>
 
-    <!-- ─── SOBRE ─── -->
-    <section id="sobre" class="section">
-      <div class="section-header">
-        <!-- <h2>Sobre</h2> -->
-        <div class="rule"><span>A Artista</span></div>
+    <section id="sobre" class="secao">
+      <div class="secao-cabecalho">
+        <div class="filete"><span>A Artista</span></div>
       </div>
 
       <div class="sobre-layout">
-        <div class="sobre-image-col">
-          <img src="images/avatar.JPG?w=500&q=80" alt="The Artist" />
-        </div>
-        <div class="sobre-text">
-          <!-- <h3>A visão</h3> -->
-          <p>
-            Victoria Velazquez é artista visual, filha de imigrantes, e atua com pesquisa e educação. Seus trabalhos exploram o universo cromático e estudam o luto, imprimindo espíritos que ultrapassam corpo e matéria.
-          </p>
-          <p>
-            É artista visual, filha de imigrantes, e atua com pesquisa e educação. Seus trabalhos exploram o universo cromático e estudam o luto, imprimindo espíritos que ultrapassam corpo e matéria.
-          </p>
-          <div class="sobre-sig">— Victoria Velazquez</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── CONTATO ─── -->
-    <section id="contato" class="section">
-      <div class="section-header">
-        <!-- <h2>Contato</h2> -->
-        <div class="rule"><span>Entrar em Contato</span></div>
-      </div>
-
-      <div class="contato-layout">
-        <p class="contato-intro">
-          Entre em contato para conversar sobre aquisições, exposições e trabalhos<br>
-          sinta-se livre para enviar um email ou entrar em contato pelas redes.
-        </p>
-
-        <div class="contato-grid">
-          <div class="contato-item">
-            <div class="label">Email</div>
-            <p><a href="mailto:gonzalvez.vicky@gmail.com">gonzalvez.vicky@gmail.com</a></p>
-          </div>
-          <div class="contato-item">
-            <div class="label">Instagram</div>
-            <p><a href="mailto:gonzalvez.vicky@gmail.com">gonzalvez.vicky@gmail.com</a></p>
-          </div>
-          <div class="contato-item">
-            <div class="label">Whatsapp</div>
-            <p><a href="mailto:gonzalvez.vicky@gmail.com">gonzalvez.vicky@gmail.com</a></p>
-          </div>
+        <div class="sobre-imagem">
+          <img src="images/avatar.JPG" alt="Victoria Velazquez" />
         </div>
 
+        <div>
+          <div class="sobre-texto">
+            <p>
+              Victoria Velazquez é artista visual, filha de imigrantes, e atua com pesquisa e educação. Seus trabalhos exploram o universo cromático e estudam o luto, imprimindo espíritos que ultrapassam corpo e matéria.
+            </p>
+            <p>
+              É artista visual, filha de imigrantes, e atua com pesquisa e educação. Seus trabalhos exploram o universo cromático e estudam o luto, imprimindo espíritos que ultrapassam corpo e matéria.
+            </p>
+          </div>
+
+          <div class="sobre-contato">
+            <div class="rotulo">Contato</div>
+            <p class="intro">
+              Para aquisições, exposições e demais assuntos, escreva ou envie uma mensagem pelas redes.
+            </p>
+            <div class="itens">
+              <div class="item">
+                <div class="campo">Email</div>
+                <p><a href="mailto:gonzalvez.vicky@gmail.com">gonzalvez.vicky@gmail.com</a></p>
+              </div>
+              <div class="item">
+                <div class="campo">Instagram</div>
+                <p><a href="mailto:gonzalvez.vicky@gmail.com">gonzalvez.vicky@gmail.com</a></p>
+              </div>
+              <div class="item">
+                <div class="campo">WhatsApp</div>
+                <p><a href="mailto:gonzalvez.vicky@gmail.com">gonzalvez.vicky@gmail.com</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ═══════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════ -->
   <footer>
-    <div class="footer-logo">Atelier</div>
-    <div class="footer-copy">© 2026 Victoria Velazquez. Todos os direitos reservados.</div>
-    <div class="footer-links">
-      <a href="#" onclick="showSection('galeria',this);return false;">Galeria</a>
-      <a href="#" onclick="showSection('contato',this);return false;">Contato</a>
+    <div class="rodape-logo">Atelier</div>
+    <div class="rodape-direitos">© 2026 Victoria Velazquez. Todos os direitos reservados.</div>
+    <div class="rodape-links">
+      <a href="#" data-secao="galeria">Galeria</a>
+      <a href="#" data-secao="sobre">Sobre</a>
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════
-       MODAL
-  ═══════════════════════════════════════ -->
-  <div class="modal-backdrop" id="modal-backdrop" onclick="closeModalOnBackdrop(event)">
-    <div class="modal" id="modal">
-      <button class="modal-close" onclick="closeModal()">✕ Fechar</button>
-      <div class="modal-images" id="modal-images">
-        <!-- injected by JS -->
-      </div>
-      <div class="modal-info" id="modal-info">
-        <!-- injected by JS -->
-      </div>
+  <div class="modal-fundo" id="modal-fundo" onclick="fecharModalNoFundo(event)">
+    <div class="modal">
+      <button class="modal-fechar" onclick="fecharModal()">✕ Fechar</button>
+      <div class="modal-imagens" id="modal-imagens"></div>
+      <div class="modal-dados" id="modal-dados"></div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-       JAVASCRIPT
-  ═══════════════════════════════════════ -->
+  <script src="quadros.js"></script>
   <script>
-    /* ── SECTION SWITCHING ── */
-    function showSection(id, linkEl) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-      if (linkEl && linkEl.tagName === 'A') linkEl.classList.add('active');
+    function mostrarSecao(id) {
+      document.querySelectorAll('.secao').forEach(s => s.classList.toggle('ativa', s.id === id));
+      document.querySelectorAll('[data-secao]').forEach(a => a.classList.toggle('ativo', a.dataset.secao === id));
     }
 
-    /* ── PAINTING DATA ── */
-    const paintings = {
-  g1: {
-    title: 'Jiboia Jiboia',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_-(22).jpg'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g2: {
-    title: 'Tecido Tecido',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_-(20).jpg'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g3: {
-    title: 'Olhos Olhos',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_-(19).jpg'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g4: {
-    title: 'Ovelha Ovelha',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_-(18).jpg'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g5: {
-    title: 'Dodo Dodo',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (16).jpg'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g6: {
-    title: 'Pipo Pipo',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_-(17).jpg'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g7: {
-    title: 'Mulher Mulher',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (12).JPG'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g8: {
-    title: 'Teatro Teatro',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (13).JPG'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g9: {
-    title: 'Cobra Cobra',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (14).jpg'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g10: {
-    title: 'Passaro Passaro',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (15).jpg'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g11: {
-    title: 'Cavalo Cavalo',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (1).JPG'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g12: {
-    title: 'Homem Homem',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (2).JPG'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g13: {
-    title: 'Fogo Fogo',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (9).JPG'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g14: {
-    title: 'Bandeiras Bandeiras',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (11).JPG'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g15: {
-    title: 'Diabo Diabo',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (3).JPG'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g16: {
-    title: 'Mascara Mascara',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (4).JPG'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g17: {
-    title: 'Linhas Linhas',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (5).JPG'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g18: {
-    title: 'Rua Rua',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_ (6).JPG'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-  g19: {
-    title: 'Lamen Lamen',
-    year: '2026', medium: 'Óleo sobre tela', size: '—',
-    images: ['images/imagem_-(21).jpg'],
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    label: 'Galeria.'
-  },
-};
+    document.querySelectorAll('[data-secao]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        mostrarSecao(a.dataset.secao);
+      });
+    });
 
-    /* ── MODAL ── */
-    function openModal(id) {
-      const p = paintings[id];
-      if (!p) return;
+    const quadrosPorId = {};
+    window.GALLERY_DATA.forEach(item => {
+      if (item.tipo === 'pintura') quadrosPorId[item.id] = item;
+    });
 
-      const imgHTML = p.images.map((src, i) =>
-        `<img src="${src}" alt="${p.title}" style="${i===0 ? 'flex:2;' : 'flex:1;'}" />`
+    function renderizarGaleria() {
+      const grade = document.getElementById('grade-quadros');
+      grade.innerHTML = window.GALLERY_DATA.map(item => {
+        if (item.tipo === 'texto') {
+          return `<div class="quadro-texto"><p>${item.html}</p></div>`;
+        }
+        return `
+          <figure>
+            <div class="cartao-quadro" onclick="abrirModal('${item.id}')">
+              <div class="passe-partout">
+                <img src="${item.imagem}" alt="${item.titulo}" />
+              </div>
+              <div class="sobreposicao"><p>${item.disponibilidade}</p></div>
+            </div>
+            <figcaption class="legenda-quadro">${item.tecnica} · ${item.ano}</figcaption>
+          </figure>
+        `;
+      }).join('');
+    }
+
+    function abrirModal(id) {
+      const q = quadrosPorId[id];
+      if (!q) return;
+
+      const imagens = q.imagensModal && q.imagensModal.length ? q.imagensModal : [q.imagem];
+
+      document.getElementById('modal-imagens').innerHTML = imagens.map(src =>
+        `<img src="${src}" alt="${q.titulo}" />`
       ).join('');
 
-      document.getElementById('modal-images').innerHTML = imgHTML;
+      document.getElementById('modal-dados').innerHTML = `
+		  <span class="modal-etiqueta">${q.etiqueta}</span>
+		  <h2>${q.titulo}</h2>
+		  <div class="ficha">
+			<span><strong>Ano:</strong> ${q.ano}</span>
+			<span><strong>Técnica:</strong> ${q.tecnica}</span>
+			<span><strong>Dimensões:</strong> ${q.dimensoes}</span>
+		  </div>
+		  <p>${q.descricao}</p>
+		  <a class="btn-comprar" href="catalogo.pdf" target="_blank" rel="noopener">Ver Catálogo</a>
+		`;
 
-      document.getElementById('modal-info').innerHTML = `
-        <span class="modal-label">${p.label}</span>
-        <h2>${p.title}</h2>
-        <div class="meta">
-          <span><strong>Ano:</strong> ${p.year}</span>
-          <span><strong>Técnica:</strong> ${p.medium}</span>
-          <span><strong>Dimensões:</strong> ${p.size}</span>
-        </div>
-        <p>${p.description}</p>
-        ${p.price ? `<div class="modal-price">${p.price}</div><button class="btn-acquire" onclick="showSection('contato',null)">Comprar</button>` : ''}
-      `;
-
-      document.getElementById('modal-backdrop').classList.add('open');
+      document.getElementById('modal-fundo').classList.add('aberto');
       document.body.style.overflow = 'hidden';
     }
 
-    function closeModal() {
-      document.getElementById('modal-backdrop').classList.remove('open');
+    function fecharModal() {
+      document.getElementById('modal-fundo').classList.remove('aberto');
       document.body.style.overflow = '';
     }
 
-    function closeModalOnBackdrop(e) {
-      if (e.target === document.getElementById('modal-backdrop')) closeModal();
+    function fecharModalNoFundo(e) {
+      if (e.target === document.getElementById('modal-fundo')) fecharModal();
     }
 
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+
+    renderizarGaleria();
   </script>
 </body>
 </html>
