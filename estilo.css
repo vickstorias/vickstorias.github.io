@@ -1,6 +1,6 @@
 :root {
   --tinta: #1a1410;
-  --pergaminho: #f5f0e8;
+  --scroll: #f5f0e8;
   --creme: #ede7d9;
   --dourado: #b8956a;
   --dourado-escuro: #8a6d4b;
@@ -14,12 +14,24 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background-image: url('images/template/background_portal.jpg');
+  background-repeat: repeat;
+  background-position: top left;
+  background-color: #221912;
+  
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
 
 body {
   font-family: 'EB Garamond', Georgia, serif;
   color: var(--tinta);
-  background: var(--pergaminho);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,10 +40,9 @@ body {
 /* Cabeçalho */
 header {
   height: var(--altura-cabecalho);
-  background-image: url('images/template/header_portal.png');
+  background-image: url('images/template/header_portal.jpg');
   background-size: min(calc(100vh * 16 / 11), 100%) 100%;
   background-position: center;
-  background-color: #221912;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
@@ -94,11 +105,10 @@ nav a.ativo::after { transform: scaleX(1); }
 /* Corpo */
 main {
   flex: 1;
-  background-image: url('images/template/body_portal.png');
+  background-image: url('images/template/body_portal.jpg');
   background-size: min(calc(100vh * 16 / 11), 100%) auto;
   background-position: center top;
   background-repeat: repeat-y;
-  background-color: #221912;
   padding: 10px 80px 70px;
 }
 
@@ -150,7 +160,7 @@ main {
 .filete::before { background: linear-gradient(90deg, transparent, var(--dourado-escuro)); }
 .filete::after  { background: linear-gradient(90deg, var(--dourado-escuro), transparent); }
 
-/* Galeria */
+/* Obras */
 .grade-quadros {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -224,7 +234,7 @@ main {
 .cartao-quadro:hover .legenda-quadro { color: var(--dourado); }
 
 .cartao-quadro .passe-partout {
-  padding: clamp(8px, 1.4vw, 14px);
+  padding: 0px;
   background: var(--creme);
 }
 
@@ -301,10 +311,8 @@ main {
 
 .modal-imagens {
   background: var(--tinta);
-  padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .modal-imagens img {
@@ -366,6 +374,14 @@ main {
   font-size: clamp(1.02rem, 1.9cqw, 1.18rem);
   line-height: 1.75;
   color: #3a2e24;
+}
+
+.modal-dados .modal-preco {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.35rem, 2.6cqw, 1.7rem);
+  color: var(--tinta);
+  letter-spacing: 0.08em;
+  margin-top: auto;
 }
 
 .modal-dados .btn-comprar {
@@ -444,16 +460,6 @@ main {
   margin-bottom: 20px;
 }
 
-.sobre-texto p:first-of-type::first-letter {
-  font-family: 'Cinzel', serif;
-  font-size: 3.5rem;
-  line-height: 0.85;
-  float: left;
-  margin-right: 8px;
-  color: var(--dourado-escuro);
-  margin-top: 6px;
-}
-
 .sobre-contato {
   margin-top: clamp(36px, 6vw, 60px);
   padding-top: clamp(20px, 3vw, 32px);
@@ -462,7 +468,7 @@ main {
 
 .sobre-contato .rotulo {
   font-family: 'Cinzel', serif;
-  font-size: 0.68rem;
+  font-size: 1.25rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--dourado);
@@ -483,16 +489,29 @@ main {
 }
 
 .sobre-contato .item .campo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-family: 'Cinzel', serif;
-  font-size: 0.6rem;
+  font-size: 1.25rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--dourado-escuro);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
+.sobre-contato .item .campo svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .sobre-contato .item p {
-  font-size: 1rem;
+  font-size: 1.25rem;
   line-height: 1.5;
   color: var(--tinta);
   margin: 0;
